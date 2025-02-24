@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLD Agencement - Plâtrerie, Isolation, Enduit et Peinture à Arras, Cambrai, Douai</title>
+    <meta name="description" content="FLD Agencement, spécialiste en isolation, plâtrerie, enduit et peinture en bâtiment. Devis gratuit sur Arras, Cambrai & Douai.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="realisations.html">Réalisations</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>FLD AGENCEMENT</h1>
+            <p>Expert en rénovation sur Arras, Cambrai et Douai</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="contact">
+            <div class="contact-form">
+                <h1>Contactez-nous</h1>
+                <p class="required-fields">* Champs obligatoires</p>
+                <form action="traitement.php" method="POST">
+                    <div class="form-group">
+                        <label for="nom">Nom complet *</label>
+                        <input type="text" id="nom" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tel">Téléphone</label>
+                        <input type="tel" id="tel" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" class="form-control" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-container">
+                            <input type="checkbox" required>
+                            J'accepte la politique de confidentialité *                            
+                        </label>
+                    </div>
+                    <div><a href="informationsLegales.html">Consulter la politique</a></div>
+                    <button type="submit" class="btn">Envoyer</button>
+                </form>
+            </div>
+            <div class="map-container">
+                <h2>Où nous trouver</h2>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2555.905043567056!2d2.7743382760424615!3d50.16291250802618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47dd4fefab6bf471%3A0x72fce8ba09c10e65!2s10%20Rue%20Jules%20Ferry%2C%2062121%20Courcelles-le-Comte!5e0!3m2!1sfr!2sfr!4v1740408239471!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>            </div>
+        </section>
+    </main>
+
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>FLD Agencement</h3>
+                <p>SIRET</p>
+                <p>Adresse</p>
+                <p>Tél</p>
+                <p>Email</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liens Utiles</h3>
+                <a href="informationsLegales.html">Informations Légales</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Zone d'Intervention</h3>
+                <p>Arras | Cambrai | Douai</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 FLD Agencement - Tous droits réservés</p>
+            <p>Site hébergé par Hostinger - [Adresse de l'hébergeur]</p>
+        </div>
+    </footer>
+</body>
+</html>
