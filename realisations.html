@@ -3,173 +3,302 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FLD Agencement - Plâtrerie, Isolation, Enduit et Peinture à Arras, Cambrai, Douai</title>
-    <meta name="description" content="FLD Agencement, spécialiste en isolation, plâtrerie, enduit et peinture en bâtiment. Devis gratuit sur Arras, Cambrai & Douai.">
+    <title>FLD Agencement - Nos Réalisations</title>
+    <meta name="description" content="Découvrez les réalisations de FLD Agencement en matière d'isolation, plâtrerie, enduit et peinture sur Arras, Cambrai & Douai.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
-    <nav class="main-nav">
-        <div class="nav-container">
-            <button class="mobile-menu-btn" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-links">
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="index.html#services">Services</a></li>
-                <li><a href="realisations.html">Réalisations</a></li>
-                <li><a href="contact.html">Contact</a></li>
+    <!-- Navbar -->
+<!-- Navbar -->
+<nav class="navbar navbar-expand bg-light shadow-sm">       
+    <div class="container">
+        <a class="navbar-brand" href="index.html">FLD</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html#services">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html#about">À propos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="realisations.html">Réalisations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
             </ul>
         </div>
-    </nav>
-
-    <main>
-        <section class="realisations">
-            <h1>Mes Réalisations</h1>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <h3>Chantier isolation</h3>
-                    <div class="carousel-container isolation">
-                        <div class="carousel-slide">
-                            <img src="images/living-room-2732939_1280.jpg" alt="Isolation 1">
-                            <div class="carousel-caption">Description de l'isolation 1</div>
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="images/facade-insulation-978999_1280.jpg" alt="Isolation 2">
-                            <div class="carousel-caption">Description de l'isolation 2</div>
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="images/chairs-2181947_1920.jpg" alt="Isolation 3">
-                            <div class="carousel-caption">Description de l'isolation 3</div>
-                        </div>
-                        <a class="carousel-prev" onclick="plusSlides('isolation', -1)">&#10094;</a>
-                        <a class="carousel-next" onclick="plusSlides('isolation', 1)">&#10095;</a>
+    </div>
+</nav>
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2>Nos Travaux Récents</h2>
+            <p class="text-center mb-5">Chaque projet est réalisé avec soin et attention aux détails</p>
+            
+            <div class="row mb-5">
+                <div class="col-lg-6">
+                    <div class="project-info">
+                        <h3>Isolation complète</h3>
+                        <p>Rénovation énergétique d'une maison à Arras</p>
+                        <ul class="project-details">
+                            <li><i class="fas fa-calendar-alt"></i> Date: Janvier 2024</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Lieu: Arras</li>
+                            <li><i class="fas fa-tasks"></i> Travaux: Isolation thermique des murs et combles</li>
+                        </ul>
+                        <p>Ce projet a permis d'améliorer considérablement la performance énergétique d'une maison ancienne, réduisant les factures de chauffage de plus de 30%.</p>
                     </div>
                 </div>
-
-                <div class="gallery-item">
-                    <h3>Chantier peinture</h3>
-                    <div class="carousel-container plastering">
-                        <div class="carousel-slide">
-                            <img src="images/paint-brush-1034901_1920.jpg" alt="Plâtrerie 1">
-                            <div class="carousel-caption">Description de la plâtrerie 1</div>
+                <div class="col-lg-6">
+                    <!-- Carousel 1 -->
+                    <div id="carouselIsolation" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselIsolation" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselIsolation" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselIsolation" data-bs-slide-to="2" aria-label="Slide 3"></button>
                         </div>
-                        <div class="carousel-slide">
-                            <img src="images/paint-4191397_1920.jpg" alt="Plâtrerie 2">
-                            <div class="carousel-caption">Description de la plâtrerie 2</div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="images/carpenter-measures-wood-with-angle-tool-makes-notes.jpg" class="d-block w-100" alt="Isolation avant travaux">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Avant travaux</h5>
+                                    <p>État initial de la maison avant isolation</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="images/facade-insulation-978999_1280.jpg" class="d-block w-100" alt="Isolation en cours">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Pendant travaux</h5>
+                                    <p>Installation de l'isolation thermique</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="images/color-791622_1280.jpg" class="d-block w-100" alt="Isolation terminée">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Après travaux</h5>
+                                    <p>Résultat final après isolation</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="carousel-slide">
-                            <img src="images/painting-2057373_1280.jpg" alt="Plâtrerie 3">
-                            <div class="carousel-caption">Description de la plâtrerie 3</div>
-                        </div>
-                        <a class="carousel-prev" onclick="plusSlides('plastering', -1)">&#10094;</a>
-                        <a class="carousel-next" onclick="plusSlides('plastering', 1)">&#10095;</a>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselIsolation" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Précédent</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselIsolation" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Suivant</span>
+                        </button>
                     </div>
                 </div>
-
-                <div class="gallery-item">
-                    <h3>Chantier finitions enduit</h3>
-                    <div class="carousel-container painting">
-                        <div class="carousel-slide">
-                            <img src="images/move-3973175_1920.jpg" alt="Peinture 1">
-                            <div class="carousel-caption">Description de la peinture 1</div>
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="images/paintbrush-4577578_1280.jpg" alt="Peinture 2">
-                            <div class="carousel-caption">Description de la peinture 2</div>
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="images/color-791622_1280.jpg" alt="Peinture 3">
-                            <div class="carousel-caption">Description de la peinture 3</div>
-                        </div>
-                        <a class="carousel-prev" onclick="plusSlides('painting', -1)">&#10094;</a>
-                        <a class="carousel-next" onclick="plusSlides('painting', 1)">&#10095;</a>
-                    </div>
-                </div>
-           </div>
-        </section>
-
-        <section class="testimonials">
-            <h2>Avis Clients</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="rating">★★★★★</div>
-                    <p>"Travail soigné et équipe professionnelle. Je recommande vivement !"</p>
-                    <cite>- Jean D., Arras</cite>
-                </div>
-                <div class="testimonial-card">
-                    <div class="rating">★★★★☆</div>
-                    <p>"Très satisfait de la rénovation de mon appartement. Rapide et efficace."</p>
-                    <cite>- Marie L., Cambrai</cite>
-                </div>
-                <div class="testimonial-card">
-                    <div class="rating">★★★★★</div>
-                    <p>"Excellent travail d'isolation. Ma maison est beaucoup plus confortable maintenant."</p>
-                    <cite>- Paul R., Douai</cite>
-                </div>
-            </div>
-        </section>
-    </main>
-
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>FLD Agencement</h3>
-                <p>SIRET</p>
-                <p>Adresse</p>
-                <p>Tél</p>
-                <p>Email</p>
-            </div>
-            <div class="footer-section">
-                <h3>Liens Utiles</h3>
-                <a href="informationsLegales.html">Informations Légales</a>
             </div>
             
-            <div class="footer-section">
-                <h3>Zone d'Intervention</h3>
-                <p>Arras | Cambrai | Douai</p>
+            <div class="row mb-5">
+                <div class="col-lg-6 order-lg-2">
+                    <div class="project-info">
+                        <h3>Rénovation peinture</h3>
+                        <p>Rafraîchissement complet d'un appartement à Cambrai</p>
+                        <ul class="project-details">
+                            <li><i class="fas fa-calendar-alt"></i> Date: Mars 2024</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Lieu: Cambrai</li>
+                            <li><i class="fas fa-tasks"></i> Travaux: Peinture complète, traitement des murs</li>
+                        </ul>
+                        <p>Cet appartement a retrouvé une nouvelle jeunesse grâce à une rénovation complète des peintures. Nous avons utilisé des peintures écologiques pour un résultat à la fois esthétique et respectueux de l'environnement.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <!-- Carousel 2 -->
+                    <div id="carouselPeinture" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselPeinture" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselPeinture" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselPeinture" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="images/chairs-2181947_1920.jpg" class="d-block w-100" alt="Peinture avant travaux">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Avant travaux</h5>
+                                    <p>État initial de l'appartement</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="images/move-3973175_1920.jpg" class="d-block w-100" alt="Peinture en cours">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Pendant travaux</h5>
+                                    <p>Mise en peinture des murs</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="images/living-room-2732939_1280.jpg" class="d-block w-100" alt="Peinture terminée">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Après travaux</h5>
+                                    <p>Résultat final avec les nouvelles peintures</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselPeinture" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Précédent</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselPeinture" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Suivant</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mb-5">
+                <div class="col-lg-6">
+                    <div class="project-info">
+                        <h3>Plâtrerie décorative</h3>
+                        <p>Création de cloisons et faux plafonds à Douai</p>
+                        <ul class="project-details">
+                            <li><i class="fas fa-calendar-alt"></i> Date: Mai 2024</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Lieu: Douai</li>
+                            <li><i class="fas fa-tasks"></i> Travaux: Création de cloisons, faux plafonds décoratifs</li>
+                        </ul>
+                        <p>Ce projet a permis de repenser complètement l'espace intérieur d'une maison en créant des séparations modernes et des faux plafonds avec éclairage intégré, alliant fonctionnalité et design.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <!-- Carousel 3 -->
+                    <div id="carouselPlatrerie" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselPlatrerie" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselPlatrerie" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselPlatrerie" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="images/chairs-2181947_1920.jpg" class="d-block w-100" alt="Plâtrerie avant travaux">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Avant travaux</h5>
+                                    <p>Espace ouvert avant création des cloisons</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="images/hero.jpg" class="d-block w-100" alt="Plâtrerie en cours">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Pendant travaux</h5>
+                                    <p>Installation des structures et plaques de plâtre</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="images/facade-insulation-978999_1280.jpg" class="d-block w-100" alt="Plâtrerie terminée">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Après travaux</h5>
+                                    <p>Résultat final avec cloisons et faux plafonds</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselPlatrerie" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Précédent</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselPlatrerie" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Suivant</span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>© 2025 FLD Agencement - Tous droits réservés</p>
-            <p>Site hébergé par Hostinger - [Adresse de l'hébergeur]</p>
+    </section>
+
+<!-- CTA Section -->
+<section class="cta-section text-center">
+    <div class="container">
+        <h2 class="m-2">Vous avez un projet similaire ?</h2>
+        <p class="m-2">Contactez-nous dès aujourd'hui pour discuter de vos besoins et obtenir un devis gratuit</p>
+        <a href="contact.html" class="btn btn-primary btn-lg my-3">Demander un devis</a>
+    </div>
+</section>
+
+
+<footer>
+    <div class="footer-container m-3">
+        <div class="footer-section">
+            <h4 class="footer-heading"> FLD Agencement</h4>
+            <ul class="footer-contact-info">
+                <li>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>10 Rue Jules Ferry, 62121 Courcelles-le-Comte</span>
+                </li>
+                <li>
+                    <i class="fas fa-phone-alt"></i>
+                    <span>06 50 29 70 05</span>
+                </li>
+                <li>
+                    <i class="fas fa-envelope"></i>
+                    <span>contact@fld-agencement.fr</span>
+                </li>
+                <li>
+                    <i class="fas fa-building"></i>
+                    <span>SIRET : 91424937000026</span>
+                </li>
+            </ul>
         </div>
-    </footer>
+        <div class="footer-section">
+            <h4 class="footer-heading"> Suivez-nous sur Facebook</h4>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/fldagencement" target="_blank" class="facebook-icon" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
+        </div>
+        <div class="footer-section">
+            <h4 class="footer-heading"> Liens Utiles</h4>
+            <ul class="footer-links list-unstyled">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="informationsLegales.html">Informations Légales</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>&copy; 2025 FLD Agencement - Tous droits réservés</p>
+    </div>
+</footer>
+    
+    
+    
 
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
-        let slideIndex = {
-            isolation: 1,
-            plastering: 1,
-            painting: 1,
-            coating: 1
-        };
-
-        function showSlides(container, n) {
-            let i;
-            let slides = document.querySelectorAll(`.${container} .carousel-slide`);
-            if (n > slides.length) {slideIndex[container] = 1}
-            if (n < 1) {slideIndex[container] = slides.length}
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
+        // Script pour changer la couleur de la navbar lors du défilement
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
             }
-            slides[slideIndex[container]-1].style.display = "block";
-        }
+        });
 
-        function plusSlides(container, n) {
-            showSlides(container, slideIndex[container] += n);
-        }
-
-        function currentSlide(container, n) {
-            showSlides(container, slideIndex[container] = n);
-        }
-
-        document.addEventListener('DOMContentLoaded', (event) => {
-            showSlides('isolation', 1);
-            showSlides('plastering', 1);
-            showSlides('painting', 1);
-            showSlides('coating', 1);
+        // Initialisation des carrousels
+        document.addEventListener('DOMContentLoaded', function() {
+            // Options des carrousels
+            const carouselOptions = {
+                interval: 5000,
+                wrap: true,
+                ride: 'carousel'
+            };
+            
+            // Initialisation des carrousels Bootstrap
+            const carousels = document.querySelectorAll('.carousel');
+            carousels.forEach(function(carousel) {
+                new bootstrap.Carousel(carousel, carouselOptions);
+            });
         });
     </script>
 </body>
