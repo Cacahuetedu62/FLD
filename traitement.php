@@ -1,60 +1,147 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+// Configuration des variables
+$destinataire = "rogez.aurore01@gmail.com"; // Adresse email du client
 
-require 'vendor/autoload.php';
+// Récupération et validation des données
+$nom = htmlspecialchars(trim($_POST['nom'] ?? ''), ENT_QUOTES);
+$email = htmlspecialchars(trim($_POST['email'] ?? ''), ENT_QUOTES);
+$tel = htmlspecialchars(trim($_POST['tel'] ?? ''), ENT_QUOTES);
+$message = htmlspecialchars(trim($_POST['message'] ?? ''), ENT_QUOTES);
 
-$mail = new PHPMailer(true);
+// Vérification des champs obligatoires
+if (empty($nom) || empty($email) || empty($message)) {
+    die("Erreur: Veuillez remplir tous les champs obligatoires.");
+}
 
-try {
-    // Configuration du serveur SMTP
-    $mail->isSMTP();
-    $mail->Host       = 'smtp.example.com'; // Remplacez par votre serveur SMTP
-    $mail->SMTPAuth   = true;
-    $mail->Username   = 'your_email@example.com'; // Votre email
-    $mail->Password   = 'your_password'; // Votre mot de passe
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    $mail->Port       = 587;
+// Validation de l'email
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    die("Erreur: Adresse email invalide.");
+}
 
-    // Expéditeur et destinataire
-    $mail->setFrom('your_email@example.com', 'Votre Nom');
-    $mail->addAddress('rogez.aurore01@gmail.com', 'Aurore Rogez'); // Adresse du destinataire
+// Validation du téléphone (optionnel)
+if (!empty($tel) && !preg_match('/^\+?[0-9\s\-]+$/', $tel)) {
+    die("Erreur: Numéro de téléphone invalide.");
+}
 
-    // Contenu de l'e-mail
-    $mail->isHTML(true);
-    $mail->Subject = 'Nouveau message de contact';
-    
-    // Créer le corps du message avec une belle mise en page
-    $body = '
+// Protection contre le spam par inondation (limitation des requêtes)
+session_start();
+if (!isset($_SESSION['last_submission'])) {
+    $_SESSION['last_submission'] = time();
+} else {
+    $timeSinceLast = time() - $_SESSION['last_submission'];
+    if ($timeSinceLast < 30) { // 30 secondes entre deux soumissions
+        die("Erreur: Vous envoyez des messages trop rapidement. Veuillez patienter.");
+    }
+    $_SESSION['last_submission'] = time();
+}
+
+// Sujet et contenu du mail
+$sujet = "🚨 Nouveau message client de votre site web !";
+$corps = "
     <html>
     <head>
-        <title>Nouveau message de contact</title>
+        <meta charset='UTF-8'>
         <style>
-            body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f4f4f4; }
-            .container { background-color: #ffffff; padding: 20px; border-radius: 5px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); }
-            h1 { color: #333; }
-            p { color: #555; }
+            body {
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                color: #333;
+                margin: 0;
+                padding: 0;
+                background-color: #f5f5f5;
+            }
+            .email-container {
+                max-width: 500px;
+                margin: 30px auto;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                overflow: hidden;
+                background-color: #ffffff;
+            }
+            .header {
+                background-color: #4a6da7;
+                color: white;
+                padding: 10px;
+                text-align: center;
+                margin-bottom: 25px;
+            }
+            .header h2 {
+                margin: 0;
+                font-size: 22px;
+            }
+            .content {
+                padding: 0 30px 20px 30px;
+            }
+            .field {
+                margin-bottom: 20px;
+            }
+            .field-name {
+                font-weight: bold;
+                color: #4a6da7;
+                display: block;
+                margin-bottom: 5px;
+            }
+            .message-box {
+                background-color: #f9f9f9;
+                border: 1px solid #eee;
+                border-radius: 5px;
+                padding: 15px;
+                margin-top: 5px;
+            }
+            .footer {
+                font-size: 12px;
+                text-align: center;
+                margin-top: 30px;
+                padding: 15px;
+                color: #777;
+                background-color: #f5f5f5;
+            }
         </style>
     </head>
     <body>
-        <div class="container">
-            <h1>Nouveau message de contact</h1>
-            <p>Vous avez reçu un nouveau message. Voici les détails :</p>
-            <p><strong>Nom :</strong> ' . htmlspecialchars($_POST['name']) . '</p>
-            <p><strong>Email :</strong> ' . htmlspecialchars($_POST['email']) . '</p>
-            <p><strong>Message :</strong><br>' . nl2br(htmlspecialchars($_POST['message'])) . '</p>
+        <div class='email-container'>
+            <div class='header'>
+                <h2>Nouveau message client</h2>
+            </div>
+            <div class='content'>
+                <div class='field'>
+                    <span class='field-name'>Nom:</span> 
+                    <span>$nom</span>
+                </div>
+                <div class='field'>
+                    <span class='field-name'>Email:</span> 
+                    <span>$email</span>
+                </div>
+                <div class='field'>
+                    <span class='field-name'>Téléphone:</span> 
+                    <span>" . ($tel ? $tel : "Non renseigné") . "</span>
+                </div>
+                <div class='field'>
+                    <span class='field-name'>Message:</span>
+                    <div class='message-box'>
+                        " . nl2br($message) . "
+                    </div>
+                </div>
+            </div>
+            <div class='footer'>
+                <p>Ce message a été envoyé depuis le formulaire de contact du site FLD Agencement.</p>
+            </div>
         </div>
     </body>
     </html>
-    ';
+";
 
-    $mail->Body    = $body;
-    $mail->AltBody = strip_tags($body); // Texte brut pour les clients de messagerie qui ne supportent pas HTML
+// En-têtes pour e-mail HTML
+$headers = "MIME-Version: 1.0" . "\r\n";
+$headers .= "Content-Type: text/html; charset=UTF-8" . "\r\n";
+$headers .= "From: rogez.aurore01@gmail.com" . "\r\n";
+$headers .= "Reply-To: $email" . "\r\n"; 
+$headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
 
-    // Envoi de l'e-mail
-    $mail->send();
-    echo 'Votre message a été envoyé avec succès.';
-} catch (Exception $e) {
-    echo "Une erreur s'est produite lors de l'envoi de l'email. Erreur: {$mail->ErrorInfo}";
+// Envoi du mail
+if (mail($destinataire, $sujet, $corps, $headers)) {
+    echo "Merci ! Votre message a bien été envoyé. Nous vous contacterons très prochainement.";
+} else {
+    echo "Une erreur est survenue. Veuillez réessayer.";
 }
 ?>

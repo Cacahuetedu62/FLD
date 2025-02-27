@@ -5,37 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FLD Agencement - Contact</title>
     <meta name="description" content="Contactez-nous pour obtenir un devis ou pour toute question concernant nos services d'isolation, plâtrerie, enduit et peinture.">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-<!-- Navbar -->
-<nav class="navbar navbar-expand bg-light shadow-sm">       
-    <div class="container">
-        <img src="images/Fichier 1.svg" alt="logo FLD" height="50px">
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Accueil</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html#services">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html#about">À propos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="realisations.html">Réalisations</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact</a>
-                </li>
-            </ul>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand bg-light shadow-sm">       
+        <div class="container">
+            <img src="images/Fichier 1.svg" alt="logo FLD" height="50px">
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#about">À propos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="realisations.html">Réalisations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
+
+    <div class="modal fade" id="responseModal" tabindex="-1" aria-labelledby="responseModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header" id="responseModalHeader">
+              <h5 class="modal-title" id="responseModalLabel">Message</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p id="responseMessage"></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fermer</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <main>
         <section class="contact py-5">
@@ -45,24 +61,23 @@
                         <div class="contact-form p-4 bg-white shadow rounded">
                             <h2>Contactez-nous</h2>
                             <p class="required-fields">* Champs obligatoires</p>
-                            <form action="traitement.php" method="POST">
-                                <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
-                                
+                             <form id="contactForm">
+                               
                                 <div class="mb-3">
                                     <label for="nom" class="form-label">Nom complet *</label>
-                                    <input type="text" id="nom" name="nom" class="form-control" required>
+                                    <input type="text" id="nom" name="nom" class="form-control" required autocomplete="name">
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email *</label>
-                                    <input type="email" id="email" name="email" class="form-control" required>
+                                    <input type="email" id="email" name="email" class="form-control" required autocomplete="email">
                                 </div>
                                 <div class="mb-3">
                                     <label for="tel" class="form-label">Téléphone</label>
-                                    <input type="tel" id="tel" name="tel" class="form-control">
+                                    <input type="tel" id="tel" name="tel" class="form-control" autocomplete="tel">
                                 </div>
                                 <div class="mb-3">
                                     <label for="message" class="form-label">Message *</label>
-                                    <textarea id="message" name="message" class="form-control" rows="4" required></textarea>
+                                    <textarea id="message" name="message" class="form-control" rows="4" required autocomplete="off"></textarea>
                                 </div>
                                 <div class="mb-3 form-check">
                                     <input type="checkbox" class="form-check-input" id="acceptPolicy" required>
@@ -76,7 +91,7 @@
                     <div class="col-md-6">
                         <div class="map-container shadow rounded">
                             <h2>Où nous trouver</h2>
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2555.905043567056!2d2.7743382760424615!3d50.16291250802618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47dd4fefab6bf471%3A0x72fce8ba09c10e65!2s10%20Rue%20Jules%20Ferry%2C%2062121%20Courcelles-le-Comte!5e0!3m2!1sfr!2sfr!4v1740408239471!5m2!1sfr!2sfr" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2555.905043567056!2d2.7743382760424615!3d50.16291250802618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47dd4fefab6bf471%3A0x72fce8ba09c10e65!2s10%20Rue%20Jules%20Ferry%2C%2062121%20Courcelles-le-Comte!5e0!3m2!1sfr!2sfr!4v1740408239471!5m2!1sfr!2sfr" width="100%" height="450" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
                 </div>
@@ -130,5 +145,58 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Empêche le rechargement de la page
+
+    var formData = new FormData(this); // Récupère les données du formulaire
+
+    fetch("traitement.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        // Configure le modal selon le résultat
+        const modalHeader = document.getElementById("responseModalHeader");
+        const responseMessage = document.getElementById("responseMessage");
+        
+        if (data.includes("Erreur")) {
+            // En cas d'erreur
+            modalHeader.classList.remove("bg-success", "text-white");
+            modalHeader.classList.add("bg-danger", "text-white");
+            document.getElementById("responseModalLabel").textContent = "Erreur";
+        } else {
+            // En cas de succès
+            modalHeader.classList.remove("bg-danger", "text-white");
+            modalHeader.classList.add("bg-success", "text-white");
+            document.getElementById("responseModalLabel").textContent = "Succès";
+            
+            // Réinitialiser le formulaire uniquement en cas de succès
+            document.getElementById("contactForm").reset();
+        }
+        
+        // Définir le message et afficher le modal
+        responseMessage.textContent = data;
+        
+        // Afficher le modal Bootstrap
+        var responseModal = new bootstrap.Modal(document.getElementById('responseModal'));
+        responseModal.show();
+    })
+    .catch(error => {
+        // En cas d'erreur avec la requête fetch
+        const modalHeader = document.getElementById("responseModalHeader");
+        modalHeader.classList.remove("bg-success", "text-white");
+        modalHeader.classList.add("bg-danger", "text-white");
+        document.getElementById("responseModalLabel").textContent = "Erreur";
+        document.getElementById("responseMessage").textContent = "Erreur lors de l'envoi du message. Veuillez réessayer.";
+        
+        // Afficher le modal Bootstrap
+        var responseModal = new bootstrap.Modal(document.getElementById('responseModal'));
+        responseModal.show();
+    });
+});
+        </script>
+        
 </body>
 </html>

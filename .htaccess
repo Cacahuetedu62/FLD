@@ -1,0 +1,4 @@
+# Autoriser les requêtes POST
+<Limit POST>
+  Allow from all
+</Limit>
