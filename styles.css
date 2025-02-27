@@ -31,6 +31,7 @@ body {
 .navbar {
     background-color: rgba(255, 255, 255, 0.9); /* Fond blanc avec transparence */
     transition: background-color 0.3s ease; /* Transition douce pour le changement de couleur */
+    width: 100%;
 }
 
 .navbar:hover {
@@ -38,8 +39,9 @@ body {
 }
 
 .nav-link {
-    padding: 0.5rem 1rem; /* Ajoute du padding autour des liens */
+    padding: 0.5rem 0.5rem; /* Ajoute du padding autour des liens */
     color: #333; /* Couleur du texte */
+    font-size: 0.80rem;
 }
 
 .nav-link:hover {
@@ -342,6 +344,7 @@ footer {
     background-color: var(--primary-color); /* Couleur de fond */
     color: white; /* Couleur du texte */
     padding: 20px 10px; /* Espacement interne */
+    width: 100%;
 }
 
 .footer-links {
@@ -791,4 +794,27 @@ footer {
     .credits-card {
         margin-bottom: 20px;
     }
+}
+
+.visits-container {
+    text-align: left;
+    margin-top: 20px;
+}
+
+.visits-box {
+    text-align: center;
+    display: inline-block;
+    padding: 0.5rem;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Ombre pour un effet flottant */
+    border-radius: 5px;
+    margin-top: 20px; /* Ajoutez un peu d'espace au-dessus si nécessaire */
+}
+
+
+.visits-display {
+    font-size: 1rem;
+    font-weight: bold;
+}
+.visits-label {
+    font-size: 1rem;
 }
