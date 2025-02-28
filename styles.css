@@ -819,3 +819,48 @@ footer {
     font-size: 1rem;
 }
 
+.carousel-control-prev, 
+.carousel-control-next {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 15px;
+}
+
+.carousel-control-prev-icon, 
+.carousel-control-next-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Ajout d'une bordure aux boutons de navigation pour les rendre plus visibles */
+.carousel-control-prev:hover, 
+.carousel-control-next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Style pour le carrousel */
+.carousel {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Style pour les indicateurs */
+.carousel-indicators {
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.carousel-indicators button {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 0 5px;
+}

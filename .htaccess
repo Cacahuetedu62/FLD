@@ -2,3 +2,9 @@
 <Limit POST>
   Allow from all
 </Limit>
+
+# Interdire l'accès direct aux fichiers sensibles 
+<FilesMatch "^\.">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>

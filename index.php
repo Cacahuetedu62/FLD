@@ -1,3 +1,20 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+try {
+    // Inclure le fichier du compteur de visites
+    require_once __DIR__ . '/visits-counter.php';
+    
+    // Incrémenter le compteur de visites
+    $visitCount = incrementVisitCounter();
+    echo "<!-- Compteur de visites: $visitCount -->";
+} catch (Exception $e) {
+    echo "Erreur: " . $e->getMessage();
+    error_log("Erreur compteur: " . $e->getMessage());
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -19,16 +36,16 @@
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Accueil</a>
+                    <a class="nav-link" href="index.php">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html#services">Services</a>
+                    <a class="nav-link" href="index.php#services">Services</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html#about">À propos</a>
+                    <a class="nav-link" href="index.php#about">À propos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="realisations.html">Réalisations</a>
+                    <a class="nav-link" href="realisations.php">Réalisations</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="contact.html">Contact</a>
@@ -182,25 +199,11 @@
     </section>
 
     <div class="visits-container m-2">
-        <div class="visits-box">
-            <div class="visits-display" id="visit-count">0</div>
-            <div class="visits-label">Visiteurs</div>
-        </div>
+    <div class="visits-box">
+        <div class="visits-display" id="visit-count"><?php echo $visitCount; ?></div>
+        <div class="visits-label">Visiteurs</div>
     </div>
-
-  <script>
-        // Récupérer le compteur depuis localStorage ou initialiser à 0
-        let visitCount = localStorage.getItem('visitCount') ? parseInt(localStorage.getItem('visitCount')) : 0;
-
-        // Incrémenter le compteur
-        visitCount++;
-
-        // Mettre à jour localStorage
-        localStorage.setItem('visitCount', visitCount);
-
-        // Afficher le compteur
-        document.getElementById('visit-count').textContent = visitCount;
-    </script>
+</div>
     
     <footer>
         <div class="footer-container m-3">
@@ -249,7 +252,6 @@
     
     
 
-<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
