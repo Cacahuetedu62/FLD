@@ -239,7 +239,7 @@ try {
             <div class="footer-section">
                 <h4 class="footer-heading"> Liens Utiles</h4>
                 <ul class="footer-links list-unstyled">
-                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="index.php">Accueil</a></li>
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="informationsLegales.html">Informations Légales</a></li>
                 </ul>

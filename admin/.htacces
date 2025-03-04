@@ -1,0 +1,14 @@
+# Empêcher l'accès direct aux répertoires
+Options -Indexes
+
+# Rediriger vers la page de connexion si accès direct
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ ../login.php [L,QSA]
+
+# Bloquer l'accès aux fichiers de configuration
+<FilesMatch "\.(env|conf|config|json)$">
+   Order allow,deny
+   Deny from all
+</FilesMatch>
