@@ -1,5 +1,23 @@
 <?php
+// Sécuriser la session
+session_set_cookie_params([
+    'lifetime' => 0,
+    'path' => '/',
+    'domain' => '', 
+    'secure' => true,  // Uniquement en HTTPS
+    'httponly' => true, // Empêche l'accès JavaScript
+    'samesite' => 'Strict' // Protège contre les attaques CSRF
+]);
 session_start();
+
+if (!isset($_SESSION['fingerprint'])) {
+    $_SESSION['fingerprint'] = hash('sha256', $_SERVER['HTTP_USER_AGENT'] . $_SERVER['REMOTE_ADDR']);
+} elseif ($_SESSION['fingerprint'] !== hash('sha256', $_SERVER['HTTP_USER_AGENT'] . $_SERVER['REMOTE_ADDR'])) {
+    session_destroy();
+    header('Location: ../login.php');
+    exit;
+}
+
 
 // Générer et vérifier les tokens CSRF
 function generateCSRFToken() {

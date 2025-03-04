@@ -117,6 +117,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['images'])) {
                 continue;
             }
             
+            // Vérifier les dimensions de l'image (par exemple, limite de 3000px de largeur et hauteur)
+            list($width, $height) = getimagesize($tmpName);
+            if ($width > 3000 || $height > 3000) {
+                $errors[] = "L'image " . $originalName . " est trop grande. La largeur et la hauteur doivent être inférieures à 3000px.";
+                continue;
+            }
+            
             // Générer un nom de fichier unique
             $newFileName = 'projet_' . $projet_id . '_' . uniqid() . '.' . $extension;
             $destination = $uploadDir . $newFileName;
