@@ -46,7 +46,7 @@ try {
                         <a class="nav-link" href="realisations.php">Réalisations</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                        <a class="nav-link" href="contact.php">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -153,7 +153,7 @@ try {
         <div class="container">
             <h2 class="m-2">Vous avez un projet similaire ?</h2>
             <p class="m-2">Contactez-nous dès aujourd'hui pour discuter de vos besoins et obtenir un devis gratuit</p>
-            <a href="contact.html" class="btn btn-primary btn-lg my-3">Demander un devis</a>
+            <a href="contact.php" class="btn btn-primary btn-lg my-3">Demander un devis</a>
         </div>
     </section>
 
@@ -192,7 +192,7 @@ try {
                 <h4 class="footer-heading"> Liens Utiles</h4>
                 <ul class="footer-links list-unstyled">
                     <li><a href="index.php">Accueil</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="contact.php">Contact</a></li>
                     <li><a href="informationsLegales.html">Informations Légales</a></li>
                 </ul>
             </div>

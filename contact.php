@@ -1,3 +1,7 @@
+<?php
+// Charger la configuration
+$config = require_once 'lib/config.php';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -30,7 +34,7 @@
                         <a class="nav-link" href="realisations.php">Réalisations</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                        <a class="nav-link" href="contact.php">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -84,7 +88,7 @@
                                     <label class="form-check-label" for="acceptPolicy">J'accepte la politique de confidentialité *</label>
                                 </div>
                                 <div><a href="informationsLegales.html">Consulter la politique</a></div>
-                                <div class="g-recaptcha" data-sitekey="6LdAc-kqAAAAANs2nj1AU5JIpr6l8o2uTaS-X2Y5"></div>
+                                <div class="g-recaptcha" data-sitekey="<?php echo $config['recaptcha']['site_key']; ?>"></div>
                                 <button type="submit" class="btn btn-primary">Envoyer</button>
                             </form>
                         </div>
@@ -135,7 +139,7 @@
                 <h4 class="footer-heading"> Liens Utiles</h4>
                 <ul class="footer-links list-unstyled">
                     <li><a href="index.php">Accueil</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="contact.php">Contact</a></li>
                     <li><a href="informationsLegales.html">Informations Légales</a></li>
                 </ul>
             </div>

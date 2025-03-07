@@ -48,7 +48,7 @@ try {
                     <a class="nav-link" href="realisations.php">Réalisations</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact</a>
+                    <a class="nav-link" href="ontact.php">Contact</a>
                 </li>
             </ul>
         </div>
@@ -62,7 +62,7 @@ try {
             <div class="hero-content">
                 <h1 class="mb-4">FLD AGENCEMENT</h1>
                 <p class="mb-5">Expert en rénovation intérieure sur Arras, Cambrai et Douai</p>
-                <a href="contact.html" class="btn btn-primary btn-lg">Demander un devis gratuit</a>
+                <a href="ontact.php" class="btn btn-primary btn-lg">Demander un devis gratuit</a>
             </div>
         </div>
     </section>
@@ -240,7 +240,7 @@ try {
                 <h4 class="footer-heading"> Liens Utiles</h4>
                 <ul class="footer-links list-unstyled">
                     <li><a href="index.php">Accueil</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="ontact.php">Contact</a></li>
                     <li><a href="informationsLegales.html">Informations Légales</a></li>
                 </ul>
             </div>

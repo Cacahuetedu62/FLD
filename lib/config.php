@@ -37,6 +37,10 @@ $config = [
         'user' => $env['SMTP_USER'],
         'pass' => $env['SMTP_PASS']
     ],
+    'recaptcha' => [
+        'site_key' => $env['RECAPTCHA_SITE_KEY'],
+        'secret_key' => $env['RECAPTCHA_SECRET_KEY']
+    ],
     'debug' => filter_var($env['DEBUG'], FILTER_VALIDATE_BOOLEAN)
 ];
 

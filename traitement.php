@@ -1,12 +1,15 @@
 <?php
-// Au début de vos fichiers PHP
+// Charger la configuration
+$config = require_once __DIR__ . '/config.php';
+
+// Configuration des en-têtes de sécurité
 header("X-XSS-Protection: 1; mode=block");
 header("X-Content-Type-Options: nosniff");
 header("X-Frame-Options: DENY");
 
-// Configuration des variables
-$destinataire = "rogez.aurore01@gmail.com"; // Adresse email du client
-$captchaSecretKey = '6LdAc-kqAAAAANs2nj1AU5JIpr6l8o2uTaS-X2Y5'; // Remplacez par votre clé secrète reCAPTCHA
+// Configuration des variables depuis le fichier de configuration
+$destinataire = $config['smtp']['user']; // Adresse email du client
+$captchaSecretKey = $config['recaptcha']['secret_key']; // Clé reCAPTCHA depuis config
 
 // Récupération et validation des données
 $nom = htmlspecialchars(trim($_POST['nom'] ?? ''), ENT_QUOTES);
@@ -21,9 +24,9 @@ if (empty($nom) || empty($email) || empty($message)) {
     die("Erreur: Veuillez remplir tous les champs obligatoires.");
 }
 
-// Validation de l'email
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    error_log("Erreur: Adresse email invalide.");
+// Validation de l'email - version plus permissive pour accepter les emails d'entreprise
+if (!preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $email)) {
+    error_log("Erreur: Adresse email invalide: $email");
     die("Erreur: Adresse email invalide.");
 }
 
@@ -112,18 +115,23 @@ $corps = "
     </html>
 ";
 
-// En-têtes pour e-mail HTML
+// Configuration de l'envoi d'email avec les paramètres SMTP de config
 $headers = "MIME-Version: 1.0" . "\r\n";
 $headers .= "Content-Type: text/html; charset=UTF-8" . "\r\n";
-$headers .= "From: rogez.aurore01@gmail.com" . "\r\n";
+$headers .= "From: " . $config['smtp']['user'] . "\r\n";
 $headers .= "Reply-To: $email" . "\r\n";
 $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
 
 // Envoi du mail
 if (mail($destinataire, $sujet, $corps, $headers)) {
     echo "Merci ! Votre message a bien été envoyé. Nous vous contacterons très prochainement.";
+    
+    // Journalisation du succès si le mode debug est activé
+    if ($config['debug']) {
+        error_log("Message envoyé avec succès depuis $email");
+    }
 } else {
-    error_log("Erreur lors de l'envoi de l'email.");
+    error_log("Erreur lors de l'envoi de l'email depuis $email");
     die("Une erreur est survenue. Veuillez réessayer.");
 }
 ?>
