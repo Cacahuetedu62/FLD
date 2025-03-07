@@ -1,64 +1,84 @@
 <?php
+// Activation du debugging
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 // Charger la configuration
-$config = require_once __DIR__ . '/config.php';
+try {
+    $config = require_once __DIR__ . '/lib/config.php';
+} catch (Exception $e) {
+    die("Erreur: Configuration non trouvée.");
+}
 
 // Configuration des en-têtes de sécurité
 header("X-XSS-Protection: 1; mode=block");
 header("X-Content-Type-Options: nosniff");
 header("X-Frame-Options: DENY");
 
-// Configuration des variables depuis le fichier de configuration
-$destinataire = $config['smtp']['user']; // Adresse email du client
-$captchaSecretKey = $config['recaptcha']['secret_key']; // Clé reCAPTCHA depuis config
+// Vérifier si la requête est en POST
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    die("Erreur: Méthode non autorisée.");
+}
+
+// Configuration des variables
+$destinataire = "rogez.aurore01@gmail.com";  // Adresse email du client
+$captchaSecretKey = $config['recaptcha']['secret_key'] ?? ''; 
 
 // Récupération et validation des données
-$nom = htmlspecialchars(trim($_POST['nom'] ?? ''), ENT_QUOTES);
-$email = htmlspecialchars(trim($_POST['email'] ?? ''), ENT_QUOTES);
-$tel = htmlspecialchars(trim($_POST['tel'] ?? ''), ENT_QUOTES);
-$message = htmlspecialchars(trim($_POST['message'] ?? ''), ENT_QUOTES);
+$nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_SPECIAL_CHARS);
+$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+$tel = filter_input(INPUT_POST, 'tel', FILTER_SANITIZE_SPECIAL_CHARS);
+$message = filter_input(INPUT_POST, 'message', FILTER_SANITIZE_SPECIAL_CHARS);
 $captchaResponse = $_POST['g-recaptcha-response'] ?? '';
 
 // Vérification des champs obligatoires
 if (empty($nom) || empty($email) || empty($message)) {
-    error_log("Erreur: Champs obligatoires manquants.");
     die("Erreur: Veuillez remplir tous les champs obligatoires.");
 }
 
-// Validation de l'email - version plus permissive pour accepter les emails d'entreprise
-if (!preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $email)) {
-    error_log("Erreur: Adresse email invalide: $email");
+// Validation de l'email avec filter_var
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     die("Erreur: Adresse email invalide.");
 }
 
 // Validation du téléphone (optionnel)
-if (!empty($tel) && !preg_match('/^\+?[0-9\s\-]+$/', $tel)) {
-    error_log("Erreur: Numéro de téléphone invalide.");
+if (!empty($tel) && !preg_match('/^(\+[0-9]{1,3})?[0-9\s\-]{6,15}$/', $tel)) {
     die("Erreur: Numéro de téléphone invalide.");
 }
 
-// Validation supplémentaire du message
+// Limites de longueur
+if (strlen($nom) > 100) {
+    die("Erreur: Nom trop long (maximum 100 caractères).");
+}
+
 if (strlen($message) > 1000) {
-    error_log("Erreur: Message trop long.");
-    die("Erreur: Le message est trop long.");
+    die("Erreur: Message trop long (maximum 1000 caractères).");
+}
+
+// Protection contre les injections
+if (preg_match('/<script|<iframe|javascript:|onclick|onload/i', $nom . $email . $message)) {
+    die("Erreur: Contenu non autorisé détecté.");
 }
 
 // Validation du CAPTCHA
-$captchaValidation = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$captchaSecretKey&response=$captchaResponse");
-$captchaData = json_decode($captchaValidation);
+try {
+    $captchaValidation = @file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$captchaSecretKey&response=$captchaResponse");
+    $captchaData = json_decode($captchaValidation);
 
-if (!$captchaData->success) {
-    error_log("Erreur: Validation CAPTCHA échouée.");
-    die("Erreur: Validation CAPTCHA échouée. Veuillez réessayer.");
+    if (!$captchaData || !$captchaData->success) {
+        die("Erreur: Validation CAPTCHA échouée. Veuillez réessayer.");
+    }
+} catch (Exception $e) {
+    die("Erreur: Problème de validation CAPTCHA.");
 }
 
-// Protection contre le spam par inondation (limitation des requêtes)
+// Protection contre le spam par inondation
 session_start();
 if (!isset($_SESSION['last_submission'])) {
     $_SESSION['last_submission'] = time();
 } else {
     $timeSinceLast = time() - $_SESSION['last_submission'];
-    if ($timeSinceLast < 30) { // 30 secondes entre deux soumissions
-        error_log("Erreur: Soumissions trop rapides.");
+    if ($timeSinceLast < 30) {
         die("Erreur: Vous envoyez des messages trop rapidement. Veuillez patienter.");
     }
     $_SESSION['last_submission'] = time();
@@ -115,23 +135,25 @@ $corps = "
     </html>
 ";
 
-// Configuration de l'envoi d'email avec les paramètres SMTP de config
+// Configuration de l'envoi d'email
 $headers = "MIME-Version: 1.0" . "\r\n";
 $headers .= "Content-Type: text/html; charset=UTF-8" . "\r\n";
-$headers .= "From: " . $config['smtp']['user'] . "\r\n";
+$headers .= "From: contact@" . $_SERVER['HTTP_HOST'] . "\r\n"; // Utiliser le domaine actuel
 $headers .= "Reply-To: $email" . "\r\n";
 $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
 
+// Pour Hostinger, définir l'expéditeur
+ini_set("sendmail_from", "contact@" . $_SERVER['HTTP_HOST']);
+
 // Envoi du mail
-if (mail($destinataire, $sujet, $corps, $headers)) {
-    echo "Merci ! Votre message a bien été envoyé. Nous vous contacterons très prochainement.";
-    
-    // Journalisation du succès si le mode debug est activé
-    if ($config['debug']) {
-        error_log("Message envoyé avec succès depuis $email");
-    }
+$mailSent = mail($destinataire, $sujet, $corps, $headers);
+
+if ($mailSent) {
+    echo "Votre message a été envoyé avec succès! Nous vous répondrons dans les plus brefs délais.";
+    error_log("Message envoyé avec succès depuis $email à $destinataire");
 } else {
-    error_log("Erreur lors de l'envoi de l'email depuis $email");
-    die("Une erreur est survenue. Veuillez réessayer.");
+    $error = error_get_last();
+    error_log("Erreur lors de l'envoi de l'email depuis $email: " . ($error ? $error['message'] : 'Erreur inconnue'));
+    die("Erreur: L'envoi du message a échoué. Veuillez réessayer ultérieurement ou nous contacter par téléphone.");
 }
 ?>

@@ -5,203 +5,199 @@ $config = require_once 'lib/config.php';
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FLD Agencement - Contact</title>
-    <meta name="description" content="Contactez-nous pour obtenir un devis ou pour toute question concernant nos services d'isolation, plâtrerie, enduit et peinture.">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>FLD Agencement - Contact</title>
+   <meta name="description" content="Contactez-nous pour obtenir un devis ou pour toute question concernant nos services d'isolation, plâtrerie, enduit et peinture.">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link rel="stylesheet" href="styles.css">
+   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand bg-light shadow-sm">
-        <div class="container">
-            <img src="images/Fichier 1.svg" alt="logo FLD" height="50px">
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php">Accueil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php#services">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php#about">À propos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="realisations.php">Réalisations</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.php">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+   <!-- Navbar -->
+   <nav class="navbar navbar-expand bg-light shadow-sm">
+       <div class="container">
+           <img src="images/Fichier 1.svg" alt="logo FLD" height="50px">
+           <div class="collapse navbar-collapse">
+               <ul class="navbar-nav ms-auto">
+                   <li class="nav-item"><a class="nav-link" href="index.php">Accueil</a></li>
+                   <li class="nav-item"><a class="nav-link" href="index.php#services">Services</a></li>
+                   <li class="nav-item"><a class="nav-link" href="index.php#about">À propos</a></li>
+                   <li class="nav-item"><a class="nav-link" href="realisations.php">Réalisations</a></li>
+                   <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
+               </ul>
+           </div>
+       </div>
+   </nav>
 
-    <div class="modal fade" id="responseModal" tabindex="-1" aria-labelledby="responseModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header" id="responseModalHeader">
-              <h5 class="modal-title" id="responseModalLabel">Message</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <p id="responseMessage"></p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fermer</button>
-            </div>
-          </div>
-        </div>
-      </div>
+   <div class="modal fade" id="responseModal" tabindex="-1" aria-labelledby="responseModalLabel" aria-hidden="true">
+       <div class="modal-dialog modal-dialog-centered">
+         <div class="modal-content">
+           <div class="modal-header" id="responseModalHeader">
+             <h5 class="modal-title" id="responseModalLabel">Message</h5>
+             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+           </div>
+           <div class="modal-body">
+             <p id="responseMessage"></p>
+           </div>
+           <div class="modal-footer">
+             <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fermer</button>
+           </div>
+         </div>
+       </div>
+     </div>
 
-    <main>
-        <section class="contact py-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="contact-form p-4 bg-white shadow rounded">
-                            <h2>Contactez-nous</h2>
-                            <p class="required-fields">* Champs obligatoires</p>
-                            <form id="contactForm" aria-labelledby="contactFormLabel">
-                                <div class="mb-3">
-                                    <label for="nom" class="form-label">Nom complet *</label>
-                                    <input type="text" id="nom" name="nom" class="form-control" required autocomplete="name" aria-required="true">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email *</label>
-                                    <input type="email" id="email" name="email" class="form-control" required autocomplete="email" aria-required="true">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="tel" class="form-label">Téléphone</label>
-                                    <input type="tel" id="tel" name="tel" class="form-control" autocomplete="tel">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="message" class="form-label">Message *</label>
-                                    <textarea id="message" name="message" class="form-control" rows="4" required autocomplete="off" aria-required="true"></textarea>
-                                </div>
-                                <div class="mb-3 form-check">
-                                    <input type="checkbox" class="form-check-input" id="acceptPolicy" required aria-required="true">
-                                    <label class="form-check-label" for="acceptPolicy">J'accepte la politique de confidentialité *</label>
-                                </div>
-                                <div><a href="informationsLegales.html">Consulter la politique</a></div>
-                                <div class="g-recaptcha" data-sitekey="<?php echo $config['recaptcha']['site_key']; ?>"></div>
-                                <button type="submit" class="btn btn-primary">Envoyer</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="map-container shadow rounded">
-                            <h2>Où nous trouver</h2>
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2555.905043567056!2d2.7743382760424615!3d50.16291250802618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47dd4fefab6bf471%3A0x72fce8ba09c10e65!2s10%20Rue%20Jules%20Ferry%2C%2062121%20Courcelles-le-Comte!5e0!3m2!1sfr!2sfr!4v1740408239471!5m2!1sfr!2sfr" width="100%" height="450" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+   <main>
+       <section class="contact py-5">
+           <div class="container">
+               <div class="row">
+                   <div class="col-md-6">
+                       <div class="contact-form p-4 bg-white shadow rounded">
+                           <h2>Contactez-nous</h2>
+                           <p class="required-fields">* Champs obligatoires</p>
+                           <form id="contactForm" aria-labelledby="contactFormLabel">
+                               <div class="mb-3">
+                                   <label for="nom" class="form-label">Nom complet *</label>
+                                   <input type="text" id="nom" name="nom" class="form-control" required maxlength="100">
+                               </div>
+                               <div class="mb-3">
+                                   <label for="email" class="form-label">Email *</label>
+                                   <input type="email" id="email" name="email" class="form-control" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}">
+                               </div>
+                               <div class="mb-3">
+                                   <label for="tel" class="form-label">Téléphone</label>
+                                   <input type="tel" id="tel" name="tel" class="form-control" pattern="(\+[0-9]{1,3})?[0-9\s\-]{6,15}">
+                               </div>
+                               <div class="mb-3">
+                                   <label for="message" class="form-label">Message *</label>
+                                   <textarea id="message" name="message" class="form-control" rows="4" required maxlength="1000"></textarea>
+                               </div>
+                               <div class="mb-3 form-check">
+                                   <input type="checkbox" class="form-check-input" id="acceptPolicy" required>
+                                   <label class="form-check-label" for="acceptPolicy">J'accepte la politique de confidentialité *</label>
+                               </div>
+                               <div><a href="informationsLegales.html">Consulter la politique</a></div>
+                               
+                               <!-- reCAPTCHA -->
+                               <div class="g-recaptcha mb-3" data-sitekey="6LdAc-kqAAAAANs2nj1AU5JIpr6l8o2uTaS-X2Y5"></div>
+                               
+                               <button type="submit" class="btn btn-primary">Envoyer</button>
+                           </form>
+                       </div>
+                   </div>
+                   <div class="col-md-6">
+                       <div class="map-container shadow rounded">
+                           <h2>Où nous trouver</h2>
+                           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2555.905043567056!2d2.7743382760424615!3d50.16291250802618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47dd4fefab6bf471%3A0x72fce8ba09c10e65!2s10%20Rue%20Jules%20Ferry%2C%2062121%20Courcelles-le-Comte!5e0!3m2!1sfr!2sfr!4v1740408239471!5m2!1sfr!2sfr" width="100%" height="450" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </section>
+   </main>
 
-    <footer>
-        <div class="footer-container m-3">
-            <div class="footer-section">
-                <h4 class="footer-heading"> FLD Agencement</h4>
-                <ul class="footer-contact-info">
-                    <li>
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>10 Rue Jules Ferry, 62121 Courcelles-le-Comte</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-phone-alt"></i>
-                        <span>06 50 29 70 05</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-envelope"></i>
-                        <span>fldagencement@gmail.com</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-building"></i>
-                        <span>SIRET : 91424937000026</span>
-                    </li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4 class="footer-heading"> Suivez-nous sur Facebook</h4>
-                <div class="social-icons">
-                    <a href="https://www.facebook.com/fldagencement" target="_blank" class="facebook-icon" aria-label="Facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h4 class="footer-heading"> Liens Utiles</h4>
-                <ul class="footer-links list-unstyled">
-                    <li><a href="index.php">Accueil</a></li>
-                    <li><a href="contact.php">Contact</a></li>
-                    <li><a href="informationsLegales.html">Informations Légales</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2025 FLD Agencement - Tous droits réservés</p>
-        </div>
-    </footer>
+   <footer>
+       <div class="footer-container m-3">
+           <div class="footer-section">
+               <h4 class="footer-heading">FLD Agencement</h4>
+               <ul class="footer-contact-info">
+                   <li><i class="fas fa-map-marker-alt"></i><span>10 Rue Jules Ferry, 62121 Courcelles-le-Comte</span></li>
+                   <li><i class="fas fa-phone-alt"></i><span>06 50 29 70 05</span></li>
+                   <li><i class="fas fa-envelope"></i><span>fldagencement@gmail.com</span></li>
+                   <li><i class="fas fa-building"></i><span>SIRET : 91424937000026</span></li>
+               </ul>
+           </div>
+           <div class="footer-section">
+               <h4 class="footer-heading">Suivez-nous sur Facebook</h4>
+               <div class="social-icons">
+                   <a href="https://www.facebook.com/fldagencement" target="_blank" class="facebook-icon" aria-label="Facebook">
+                       <i class="fab fa-facebook-f"></i>
+                   </a>
+               </div>
+           </div>
+           <div class="footer-section">
+               <h4 class="footer-heading">Liens Utiles</h4>
+               <ul class="footer-links list-unstyled">
+                   <li><a href="index.php">Accueil</a></li>
+                   <li><a href="contact.php">Contact</a></li>
+                   <li><a href="informationsLegales.html">Informations Légales</a></li>
+               </ul>
+           </div>
+       </div>
+       <div class="copyright">
+           <p>&copy; 2025 FLD Agencement - Tous droits réservés</p>
+       </div>
+   </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-document.getElementById("contactForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Empêche le rechargement de la page
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+   <script>
+   document.getElementById("contactForm").addEventListener("submit", function(event) {
+       event.preventDefault();
 
-    var formData = new FormData(this); // Récupère les données du formulaire
+       // Validation
+       const email = document.getElementById("email").value;
+       const tel = document.getElementById("tel").value;
+       const nom = document.getElementById("nom").value;
+       const message = document.getElementById("message").value;
+       
+       // Email validation
+       if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+           showModal("Erreur", "Format d'email invalide.");
+           return;
+       }
+       
+       // Phone validation (if provided)
+       if (tel && !/^(\+[0-9]{1,3})?[0-9\s\-]{6,15}$/.test(tel)) {
+           showModal("Erreur", "Format de téléphone invalide.");
+           return;
+       }
+       
+       // CAPTCHA validation
+       if (grecaptcha.getResponse() === '') {
+           showModal("Erreur", "Veuillez valider le CAPTCHA.");
+           return;
+       }
 
-    fetch("traitement.php", {
-        method: "POST",
-        body: formData
-    })
-    .then(response => response.text())
-    .then(data => {
-        // Configure le modal selon le résultat
-        const modalHeader = document.getElementById("responseModalHeader");
-        const responseMessage = document.getElementById("responseMessage");
+       var formData = new FormData(this);
 
-        if (data.includes("Erreur")) {
-            // En cas d'erreur
-            modalHeader.classList.remove("bg-success", "text-white");
-            modalHeader.classList.add("bg-danger", "text-white");
-            document.getElementById("responseModalLabel").textContent = "Erreur";
-        } else {
-            // En cas de succès
-            modalHeader.classList.remove("bg-danger", "text-white");
-            modalHeader.classList.add("bg-success", "text-white");
-            document.getElementById("responseModalLabel").textContent = "Succès";
-
-            // Réinitialiser le formulaire uniquement en cas de succès
-            document.getElementById("contactForm").reset();
-            grecaptcha.reset(); // Réinitialiser le CAPTCHA
-        }
-
-        // Définir le message et afficher le modal
-        responseMessage.textContent = data;
-
-        // Afficher le modal Bootstrap
-        var responseModal = new bootstrap.Modal(document.getElementById('responseModal'));
-        responseModal.show();
-    })
-    .catch(error => {
-        // En cas d'erreur avec la requête fetch
-        const modalHeader = document.getElementById("responseModalHeader");
-        modalHeader.classList.remove("bg-success", "text-white");
-        modalHeader.classList.add("bg-danger", "text-white");
-        document.getElementById("responseModalLabel").textContent = "Erreur";
-        document.getElementById("responseMessage").textContent = "Erreur lors de l'envoi du message. Veuillez réessayer.";
-
-        // Afficher le modal Bootstrap
-        var responseModal = new bootstrap.Modal(document.getElementById('responseModal'));
-        responseModal.show();
-    });
-});
-    </script>
+       fetch("traitement.php", {
+           method: "POST",
+           body: formData
+       })
+       .then(response => response.text())
+       .then(data => {
+           if (data.includes("Erreur")) {
+               showModal("Erreur", data);
+           } else {
+               showModal("Message envoyé !", "Merci pour votre message. Nous vous contacterons dans les plus brefs délais.");
+               document.getElementById("contactForm").reset();
+               grecaptcha.reset();
+           }
+       })
+       .catch(error => {
+           showModal("Erreur", "Erreur lors de l'envoi du message. Veuillez réessayer.");
+       });
+       
+       function showModal(title, message) {
+           const modalHeader = document.getElementById("responseModalHeader");
+           const responseMessage = document.getElementById("responseMessage");
+           
+           if (title === "Erreur") {
+               modalHeader.classList.remove("bg-success", "text-white");
+               modalHeader.classList.add("bg-danger", "text-white");
+           } else {
+               modalHeader.classList.remove("bg-danger", "text-white");
+               modalHeader.classList.add("bg-success", "text-white");
+           }
+           
+           document.getElementById("responseModalLabel").textContent = title;
+           responseMessage.textContent = message;
+           
+           var responseModal = new bootstrap.Modal(document.getElementById('responseModal'));
+           responseModal.show();
+       }
+   });
+   </script>
 </body>
 </html>

@@ -27,20 +27,15 @@ $config = [
         'pass' => $env['DB_PASS'],
         'charset' => $env['DB_CHARSET']
     ],
-    'mongodb' => [
-        'host' => $env['MONGO_HOST'],
-        'port' => $env['MONGO_PORT'],
-        'db'   => $env['MONGO_DB']
-    ],
     'smtp' => [
         'host' => $env['SMTP_HOST'],
         'user' => $env['SMTP_USER'],
         'pass' => $env['SMTP_PASS']
     ],
-    'recaptcha' => [
-        'site_key' => $env['RECAPTCHA_SITE_KEY'],
-        'secret_key' => $env['RECAPTCHA_SECRET_KEY']
-    ],
+'recaptcha' => [
+    'site_key' => '6LdAc-kqAAAAANs2nj1AU5JIpr6l8o2uTaS-X2Y5',  
+    'secret_key' => '6LdAc-kqAAAAAFX0eAY41GE59Jj5zzeVwPDGuvSb' 
+],
     'debug' => filter_var($env['DEBUG'], FILTER_VALIDATE_BOOLEAN)
 ];
 

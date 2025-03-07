@@ -1,4 +1,15 @@
 <?php
+
+
+session_start();
+// Basic verification only
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ../login.php');
+    exit;
+}
+
+
+
 // Sécuriser la session
 session_set_cookie_params([
     'lifetime' => 0,

@@ -8,12 +8,24 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-// Vérification du rôle de l'utilisateur (par exemple, 'admin')
+// Vérification du rôle de l'utilisateur
 if ($_SESSION['role'] !== 'admin') {
     $unauthorized = true;
     // Arrêter l'exécution du reste du code
     exit();
 }
+
+// Vérifier le token CSRF 
+if (!isset($_POST['csrf_token']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    die("Token CSRF manquant");
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && (!isset($_POST['csrf_token']) || !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token']))) {
+    die("Token CSRF invalide");
+}
+
+// Régénérer le token CSRF
+$_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 
 // Récupérer des statistiques basiques avec des requêtes préparées
 try {
@@ -73,10 +85,10 @@ try {
                         </div>
                     </div>
                     <script>
-                        var myModal = new bootstrap.Modal(document.getElementById('unauthorizedModal'), {
-                            keyboard: false
+                        document.addEventListener('DOMContentLoaded', function() {
+                            var myModal = new bootstrap.Modal(document.getElementById('unauthorizedModal'));
+                            myModal.show();
                         });
-                        myModal.show();
                     </script>
                 <?php endif; ?>
 

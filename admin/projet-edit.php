@@ -44,11 +44,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Mettre à jour le projet dans la base de données
     $stmt = $pdo->prepare("UPDATE projets SET titre = ?, sous_titre = ?, date = ?, lieu = ?, type_travaux = ?, description = ? WHERE id = ?");
-    $stmt->execute([$titre, $sous_titre, $date, $lieu, $type_travaux, $description, $id]);
-
-    // Rediriger après la mise à jour
-    header("Location: projets.php?success=updated");
-    exit;
+    
+    if ($stmt->execute([$titre, $sous_titre, $date, $lieu, $type_travaux, $description, $id])) {
+        // Régénérer le token après utilisation
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+        header("Location: projets.php?success=updated");
+        exit;
+    }
 }
 
 // Générer un token CSRF pour protéger le formulaire

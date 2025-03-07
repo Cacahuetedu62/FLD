@@ -8,6 +8,14 @@ if (!isset($_GET['projet_id']) || !is_numeric($_GET['projet_id'])) {
     exit;
 }
 
+// Vérifier le token CSRF
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && (!isset($_POST['csrf_token']) || !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token']))) {
+    die("Token CSRF invalide");
+}
+
+// Régénérer le token pour les prochaines requêtes
+$_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+
 $projet_id = (int) $_GET['projet_id'];
 
 // Récupérer les informations du projet
@@ -76,11 +84,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['images'])) {
     // Créer le répertoire s'il n'existe pas
     if (!is_dir($uploadDir)) {
         mkdir($uploadDir, 0755, true);
-    }
-    
-    // Ajouter un jeton CSRF pour la sécurité
-    if ($_POST['csrf_token'] !== $_SESSION['csrf_token']) {
-        die("Token CSRF invalide");
     }
 
     $uploadedFiles = [];
@@ -159,14 +162,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['images'])) {
     if (!empty($errors)) {
         $error = implode("<br>", $errors);
     }
-}
-?>
-
-<?php
-// Générer un jeton CSRF pour le formulaire
-session_start();
-if (!isset($_SESSION['csrf_token'])) {
-    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
 ?>
 

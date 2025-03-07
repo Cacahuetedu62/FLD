@@ -78,32 +78,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion - Administration</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>FLD Agencement - Connexion à l'espace ADMIN</title>
+    <meta name="description" content="Informations légales sur FLD Agencement, y compris nos coordonnées, conditions générales et politique de confidentialité.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body>
-    <div class="container">
-        <h2>Connexion</h2>
-        <?php if ($error): ?>
-            <div class="alert alert-danger"> <?= htmlspecialchars($error) ?> </div>
-        <?php endif; ?>
-        <form method="post">
-            <input type="hidden" name="csrf_token" value="<?= $csrf_token ?>">
-            <div>
-                <label>Nom d'utilisateur :</label>
-                <input type="text" name="username" required>
+<body class="login-page-wrapper">
+    <div class="login-form-container">
+        <div class="login-card">
+            <div class="login-card-header">
+                <h2 class="login-heading text-white">Connexion</h2>
             </div>
-            <div>
-                <label>Mot de passe :</label>
-                <input type="password" name="password" required>
+            <div class="login-card-body">
+                <?php if ($error): ?>
+                    <div class="alert login-error-alert"> <?= htmlspecialchars($error) ?> </div>
+                <?php endif; ?>
+                <form method="post">
+                    <input type="hidden" name="csrf_token" value="<?= $csrf_token ?>">
+                    <div class="mb-3">
+                        <label class="login-form-label">Nom d'utilisateur :</label>
+                        <input type="text" name="username" class="form-control login-input" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="login-form-label">Mot de passe :</label>
+                        <input type="password" name="password" class="form-control login-input" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 login-btn">Se connecter</button>
+                </form>
+                <div class="mt-3 text-center">
+                    <a href="index.php" class="login-back-link">
+                        <i class="fas fa-arrow-left me-2"></i> Retour au site
+                    </a>
+                </div>
             </div>
-            <button type="submit">Se connecter</button>
-        </form>
+        </div>
     </div>
 </body>
 </html>

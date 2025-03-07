@@ -3,9 +3,6 @@
 require_once __DIR__ . '/config.php';  // Si config.php est dans le même dossier que pdo.php
 
 
-
-
-
 class Database {
     private $pdo;
 
