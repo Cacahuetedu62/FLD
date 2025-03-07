@@ -80,7 +80,7 @@ $config = require_once 'lib/config.php';
                                <div><a href="informationsLegales.html">Consulter la politique</a></div>
                                
                                <!-- reCAPTCHA -->
-                               <div class="g-recaptcha mb-3" data-sitekey="6LdAc-kqAAAAANs2nj1AU5JIpr6l8o2uTaS-X2Y5"></div>
+                               <div class="g-recaptcha mb-3" data-sitekey="<?php echo $config['recaptcha']['site_key']; ?>"></div>
                                
                                <button type="submit" class="btn btn-primary">Envoyer</button>
                            </form>
