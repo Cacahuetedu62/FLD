@@ -232,7 +232,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['images'])) {
                                 <?php foreach ($images as $image): ?>
                                     <div class="col">
                                         <div class="card h-100">
-                                            <img src="../<?= htmlspecialchars($image['chemin']) ?>" class="image-preview" alt="Image du projet">
+                                            <img loading="lazy" src="../<?= htmlspecialchars($image['chemin']) ?>" class="image-preview" alt="Image du projet">
                                             <div class="card-body text-center">
                                                 <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteImageModal<?= $image['id'] ?>">
                                                     <i class="fas fa-trash me-1"></i>Supprimer
@@ -252,7 +252,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['images'])) {
                                                 <div class="modal-body">
                                                     <p>Êtes-vous sûr de vouloir supprimer cette image ?</p>
                                                     <div class="text-center mb-3">
-                                                        <img src="../<?= htmlspecialchars($image['chemin']) ?>" class="img-fluid" style="max-height: 200px;" alt="Image à supprimer">
+                                                        <img loading="lazy" src="../<?= htmlspecialchars($image['chemin']) ?>" class="img-fluid" style="max-height: 200px;" alt="Image à supprimer">
                                                     </div>
                                                     <p class="text-danger">
                                                         <i class="fas fa-exclamation-triangle me-2"></i>Attention : Cette action ne peut pas être annulée.

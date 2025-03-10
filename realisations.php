@@ -16,21 +16,23 @@ try {
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FLD Agencement - Nos Réalisations</title>
-    <meta name="description" content="Découvrez les réalisations de FLD Agencement en matière d'isolation, plâtrerie, enduit et peinture sur Arras, Cambrai & Douai.">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plaquiste Professionnel à Arras et Douai | Rénovation Intérieure Haute Qualité</title>
+<meta name="description" content="Experts en plâtrerie et rénovation intérieure à Arras, Douai et Cambrai. Devis gratuit, travaux de qualité, transformation de vos espaces sur mesure. Contactez FLD Agencement aujourd'hui !">  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<meta property="og:title" content="FLD Agencement - Plaquiste Professionnel">
+<meta property="og:description" content="Experts en rénovation intérieure">
+<meta property="og:image" content="https://site.com/image.jpg">
+<meta property="og:url" content="https://fld-agencement.com">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand bg-light shadow-sm">
         <div class="container">
-            <img src="images/Fichier 1.svg" alt="logo FLD" height="50px">
+            <img src="images/Fichier 1.svg" alt="logo FLD" loading="lazy" height="50px">
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
@@ -117,7 +119,7 @@ try {
                                     <div class="carousel-inner">
                                         <?php foreach ($projetImages as $key => $image): ?>
                                             <div class="carousel-item <?= $key === 0 ? 'active' : '' ?>">
-                                                <img src="<?= htmlspecialchars($image['chemin']) ?>" class="d-block w-100" alt="Image du projet <?= htmlspecialchars($projet['titre']) ?> - <?= $key + 1 ?>">
+                                                <img loading="lazy" src="<?= htmlspecialchars($image['chemin']) ?>" class="d-block w-100" alt="Image du projet <?= htmlspecialchars($projet['titre']) ?> - <?= $key + 1 ?>">
                                             </div>
                                         <?php endforeach; ?>
                                     </div>
