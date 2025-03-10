@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin/
 Disallow: /private/
 
-Sitemap: https://votre-site.com/sitemap.xml
+Sitemap: https://fld-agencement.com/sitemap.xml
