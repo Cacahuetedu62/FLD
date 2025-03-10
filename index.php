@@ -30,7 +30,7 @@ $jsonbin_key = $config['jsonbin']['key'] ?? '';
 <!-- Navbar -->
 <nav class="navbar navbar-expand bg-light shadow-sm">    
   <div class="container">
-      <img src="images/Fichier 1.svg" alt="logo FLD" loading="lazy" height="50px">
+      <img src="images/LogoFLDblanc.svg" alt="logo FLD" loading="lazy" height="50">
       <div class="collapse navbar-collapse">
           <ul class="navbar-nav ms-auto">
               <li class="nav-item">
@@ -155,7 +155,7 @@ $jsonbin_key = $config['jsonbin']['key'] ?? '';
           </div>
           <div class="col-lg-6">
               <div class="about-image">
-                  <img src="images/LOGO FLD NB[2081].jpg" class="img-fluid" loading="lazy" alt="Fondateur FLD Agencement">
+                  <img src="images/LogoFLDblanc.svg" class="img-fluid" loading="lazy" alt="Fondateur FLD Agencement">
               </div>
           </div>
       </div>

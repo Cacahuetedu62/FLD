@@ -21,7 +21,7 @@ $config = require_once 'lib/config.php';
    <!-- Navbar -->
    <nav class="navbar navbar-expand bg-light shadow-sm">
        <div class="container">
-           <img src="images/Fichier 1.svg" alt="logo FLD" loading="lazy" height="50px">
+           <img src="images/LogoFLDblanc.svg" alt="logo FLD" loading="lazy" height="50">
            <div class="collapse navbar-collapse">
                <ul class="navbar-nav ms-auto">
                    <li class="nav-item"><a class="nav-link" href="index.php">Accueil</a></li>
