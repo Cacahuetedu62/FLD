@@ -6,36 +6,63 @@ $config = require_once 'lib/config.php';
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Plaquiste professionnel à Arras et Douai | Rénovation intérieure haute qualité par un plaquiste expert | Devis gratuit</title>
-<meta name="description" content="fld agencement : votre plaquiste qualifié à Arras et Douai. Expertise en plâtrerie, cloisons et isolation. Devis gratuit pour tous vos projets d'aménagement intérieur."><meta property="og:title" content="FLD Agencement - Plaquiste Professionnel">
-<meta property="og:description" content="Experts en rénovation intérieure">
-<meta property="og:image" content="https://site.com/image.jpg">
-<meta property="og:url" content="https://fld-agencement.com">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<link rel="canonical" href="https://fld-agencement.com/">
-<link rel="icon" type="image/png" href="images/favicon.png">
+    <!-- Préchargement des ressources critiques -->
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Plaquiste professionnel à Arras et Douai | Rénovation intérieure haute qualité par un plaquiste expert | Devis gratuit</title>
+    
+    <meta name="description" content="fld agencement : votre plaquiste qualifié à Arras et Douai. Expertise en plâtrerie, cloisons et isolation. Devis gratuit pour tous vos projets d'aménagement intérieur.">
+
+    <!-- CSS non bloquants -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="styles.css">
+
+    <meta property="og:title" content="FLD Agencement - Plaquiste Professionnel">
+    <meta property="og:description" content="Experts en rénovation intérieure">
+    <meta property="og:image" content="https://site.com/image.jpg">
+    <meta property="og:url" content="https://fld-agencement.com">
+    
+    <link rel="canonical" href="https://fld-agencement.com/contact.php">
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="images/favicon-16x16.png" type="image/png">
+
+    <!-- reCAPTCHA avec attributs de sécurité -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 </head>
 
 <body>
-   <!-- Navbar -->
-   <nav class="navbar navbar-expand bg-light shadow-sm">
-       <div class="container">
-           <img src="images/LogoFLDblanc.svg" alt="logo FLD" loading="lazy" height="50">
-           <div class="collapse navbar-collapse">
-               <ul class="navbar-nav ms-auto">
-                   <li class="nav-item"><a class="nav-link" href="index.php">Accueil</a></li>
-                   <li class="nav-item"><a class="nav-link" href="index.php#services">Services</a></li>
-                   <li class="nav-item"><a class="nav-link" href="index.php#about">À propos</a></li>
-                   <li class="nav-item"><a class="nav-link" href="realisations.php">Réalisations</a></li>
-                   <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
-               </ul>
-           </div>
-       </div>
-   </nav>
+<!-- Navbar -->
+<nav class="navbar navbar-expand shadow-sm">       
+    <div class="container">
+        <img src="images/LogoFLDblanc.svg" alt="logo FLD" loading="lazy" height="50">
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php#services">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php#about">À propos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="realisations.php">Réalisations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.php">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
    <div class="modal fade" id="responseModal" tabindex="-1" aria-labelledby="responseModalLabel" aria-hidden="true">
        <div class="modal-dialog modal-dialog-centered">
@@ -88,15 +115,28 @@ $config = require_once 'lib/config.php';
                                <!-- reCAPTCHA -->
                                <div class="g-recaptcha mb-3" data-sitekey="<?php echo $config['recaptcha']['site_key']; ?>"></div>
                                
-                               <button type="submit" class="btn btn-primary">Envoyer</button>
+                               <button type="submit" class="btn btn-danger text-white fw-bold shadow-lg">Envoyer</button>
                            </form>
                        </div>
                    </div>
                    <div class="col-md-6">
                        <div class="map-container shadow rounded">
                            <h2>Où nous trouver</h2>
-                           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2555.905043567056!2d2.7743382760424615!3d50.16291250802618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47dd4fefab6bf471%3A0x72fce8ba09c10e65!2s10%20Rue%20Jules%20Ferry%2C%2062121%20Courcelles-le-Comte!5e0!3m2!1sfr!2sfr!4v1740408239471!5m2!1sfr!2sfr" width="100%" height="450" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                       </div>
+
+                           
+                           <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2555.905043567056!2d2.7743382760424615!3d50.16291250802618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47dd4fefab6bf471%3A0x72fce8ba09c10e65!2s10%20Rue%20Jules%20Ferry%2C%2062121%20Courcelles-le-Comte!5e0!3m2!1sfr!2sfr!4v1740408239471!5m2!1sfr!2sfr" 
+    width="100%" 
+    height="450" 
+    style="border:0;" 
+    allowfullscreen 
+    loading="lazy" 
+    referrerpolicy="strict-origin-when-cross-origin"
+    sandbox="allow-scripts allow-same-origin"
+    title="Localisation de FLD Agencement"
+></iframe>                       
+
+</div>
                    </div>
                </div>
            </div>
@@ -136,7 +176,9 @@ $config = require_once 'lib/config.php';
        </div>
    </footer>
 
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
    <script>
    document.getElementById("contactForm").addEventListener("submit", function(event) {
        event.preventDefault();
@@ -205,5 +247,6 @@ $config = require_once 'lib/config.php';
        }
    });
    </script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
 </body>
 </html>

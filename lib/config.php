@@ -32,12 +32,17 @@ $config = [
         'user' => $env['SMTP_USER'],
         'pass' => $env['SMTP_PASS']
     ],
-'recaptcha' => [
-    'site_key' => '6LdAc-kqAAAAANs2nj1AU5JIpr6l8o2uTaS-X2Y5',  
-    'secret_key' => '6LdAc-kqAAAAAFX0eAY41GE59Jj5zzeVwPDGuvSb' 
-],
-    'debug' => filter_var($env['DEBUG'], FILTER_VALIDATE_BOOLEAN)
+    'recaptcha' => [
+        'site_key' => '6LdAc-kqAAAAANs2nj1AU5JIpr6l8o2uTaS-X2Y5',  
+        'secret_key' => '6LdAc-kqAAAAAFX0eAY41GE59Jj5zzeVwPDGuvSb' 
+    ],
+    'debug' => filter_var($env['DEBUG'], FILTER_VALIDATE_BOOLEAN),
+    'jsonbin' => [
+        'id' => $env['JSONBIN_ID'],
+        'key' => $env['JSONBIN_API_KEY']
+    ]
 ];
+
 
 return $config; // Ne pas oublier de retourner la variable $config
 ?>

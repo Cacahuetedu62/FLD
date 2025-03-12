@@ -16,46 +16,59 @@ try {
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Plaquiste professionnel à Arras et Douai | Rénovation intérieure haute qualité par un plaquiste expert | Devis gratuit</title>
-<meta name="description" content="fld agencement : votre plaquiste qualifié à Arras et Douai. Expertise en plâtrerie, cloisons et isolation. Devis gratuit pour tous vos projets d'aménagement intérieur."><meta property="og:title" content="FLD Agencement - Plaquiste Professionnel">
-<meta property="og:description" content="Experts en rénovation intérieure">
-<meta property="og:image" content="https://site.com/image.jpg">
-<meta property="og:url" content="https://fld-agencement.com">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<link rel="canonical" href="https://fld-agencement.com/">
-<link rel="icon" type="image/png" href="images/favicon.png">
+    <!-- Préchargement des ressources critiques -->
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Plaquiste professionnel à Arras et Douai | Rénovation intérieure haute qualité par un plaquiste expert | Devis gratuit</title>
+    
+    <meta name="description" content="fld agencement : votre plaquiste qualifié à Arras et Douai. Expertise en plâtrerie, cloisons et isolation. Devis gratuit pour tous vos projets d'aménagement intérieur.">
+
+    <!-- CSS non bloquants -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="styles.css">
+
+    <meta property="og:title" content="FLD Agencement - Plaquiste Professionnel">
+    <meta property="og:description" content="Experts en rénovation intérieure">
+    <meta property="og:image" content="https://site.com/image.jpg">
+    <meta property="og:url" content="https://fld-agencement.com">
+    
+    <link rel="canonical" href="https://fld-agencement.com/realisations.php">
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="images/favicon-16x16.png" type="image/png">
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand bg-light shadow-sm">
-        <div class="container">
-            <img src="images/LogoFLDblanc.svg" alt="logo FLD" loading="lazy" height="50">
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php">Accueil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php#services">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php#about">À propos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="realisations.php">Réalisations</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.php">Contact</a>
-                    </li>
-                </ul>
-            </div>
+<!-- Navbar -->
+<nav class="navbar navbar-expand shadow-sm">       
+    <div class="container">
+        <img src="images/LogoFLDblanc.svg" alt="logo FLD" loading="lazy" height="50">
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php#services">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php#about">À propos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="realisations.php">Réalisations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.php">Contact</a>
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <section id="projects" class="projects-section">
         <div class="container">
@@ -157,7 +170,7 @@ try {
         <div class="container">
             <h2 class="m-2">Vous avez un projet similaire ?</h2>
             <p class="m-2">Contactez-nous dès aujourd'hui pour discuter de vos besoins et obtenir un devis gratuit</p>
-            <a href="contact.php" class="btn btn-primary btn-lg my-3">Demander un devis</a>
+            <a href="contact.php" class="btn btn-danger text-white fw-bold shadow-lg">Demander un devis</a>
         </div>
     </section>
 
@@ -206,9 +219,8 @@ try {
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
     <script>
         // Script pour changer la couleur de la navbar lors du défilement
         window.addEventListener('scroll', function() {
@@ -236,5 +248,7 @@ try {
             });
         });
     </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
 </body>
 </html>

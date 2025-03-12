@@ -30,13 +30,8 @@ body {
 
 /* Navbar styles */
 .navbar {
-    background-color: rgba(255, 255, 255, 0.9); /* Fond blanc avec transparence */
-    transition: background-color 0.3s ease; /* Transition douce pour le changement de couleur */
+    background-color: white;
     width: 100%;
-}
-
-.navbar:hover {
-    background-color: rgba(255, 255, 255, 1); /* Fond blanc plein au survol */
 }
 
 .nav-link {
@@ -44,13 +39,6 @@ body {
     color: #333; /* Couleur du texte */
     font-size: 0.80rem;
 }
-
-.nav-link:hover {
-    background-color: #e7e7e7; /* Change le fond au survol pour l'interaction */
-}
-
-
-
 
 /* Hero section */
 .hero {
