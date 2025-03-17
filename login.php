@@ -1,6 +1,7 @@
 <?php
 session_start();
-require_once 'lib/pdo.php'; // Assurez-vous que ce fichier définit bien $pdo
+require_once '../admin/includes/security_headers.php'; // Inclure les en-têtes de sécurité en premier
+require_once '../lib/pdo.php';
 
 // Sécurisation des sessions
 session_set_cookie_params([

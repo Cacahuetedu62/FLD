@@ -1,4 +1,5 @@
 <?php
+require_once '../admin/includes/security_headers.php'; // Inclure les en-têtes de sécurité en premier
 require_once '../admin/includes/auth.php';
 require_once '../lib/pdo.php';
 

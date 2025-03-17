@@ -3,6 +3,8 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 require_once 'lib/pdo.php';
+require_once '../admin/includes/security_headers.php'; // Inclure les en-têtes de sécurité en premier
+
 
 try {
     $stmt = $pdo->query("SELECT * FROM projets ORDER BY date DESC");

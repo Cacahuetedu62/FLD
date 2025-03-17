@@ -1,6 +1,7 @@
 <?php
 // Charger la configuration
 $config = require_once 'lib/config.php';
+require_once '../admin/includes/security_headers.php'; // Inclure les en-têtes de sécurité en premier
 ?>
 
 <!DOCTYPE html>
