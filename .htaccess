@@ -14,3 +14,8 @@
     AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript
 </IfModule>
 
+# Protéger le répertoire lib
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^lib/ - [F,L]
+</IfModule>

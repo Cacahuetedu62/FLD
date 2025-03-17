@@ -3,8 +3,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 require_once 'lib/pdo.php';
-require_once '../admin/includes/security_headers.php'; // Inclure les en-têtes de sécurité en premier
-
+require_once 'admin/includes/security_headers.php';
 
 try {
     $stmt = $pdo->query("SELECT * FROM projets ORDER BY date DESC");
@@ -26,9 +25,9 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Plaquiste professionnel à Arras et Douai | Rénovation intérieure haute qualité par un plaquiste expert | Devis gratuit</title>
+    <title>Plaquiste professionnel à Arras et Douai | Rénovation intérieure par un plaquiste expert | Devis gratuit</title>
     
-    <meta name="description" content="fld agencement : votre plaquiste qualifié à Arras et Douai. Expertise en plâtrerie, cloisons et isolation. Devis gratuit pour tous vos projets d'aménagement intérieur.">
+    <meta name="description" content="Votre plaquiste entre Arras et Douai. Expertise en plâtrerie, cloisons et isolation. Devis gratuit pour tous vos projets d'aménagement intérieur.">
 
     <!-- CSS non bloquants -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" media="print" onload="this.media='all'">
