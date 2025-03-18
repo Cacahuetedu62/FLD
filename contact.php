@@ -91,6 +91,7 @@ require_once 'admin/includes/security_headers.php';
                            <h2>Contactez-nous</h2>
                            <p class="required-fields">* Champs obligatoires</p>
                            <form id="contactForm" aria-labelledby="contactFormLabel">
+                           <label id="contactFormLabel" class="sr-only">Formulaire de contact</label>
                                <div class="mb-3">
                                    <label for="nom" class="form-label">Nom complet *</label>
                                    <input type="text" id="nom" name="nom" class="form-control" required maxlength="100">
@@ -125,17 +126,16 @@ require_once 'admin/includes/security_headers.php';
                            <h2>Où nous trouver</h2>
 
                            
-                           <iframe 
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2555.905043567056!2d2.7743382760424615!3d50.16291250802618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47dd4fefab6bf471%3A0x72fce8ba09c10e65!2s10%20Rue%20Jules%20Ferry%2C%2062121%20Courcelles-le-Comte!5e0!3m2!1sfr!2sfr!4v1740408239471!5m2!1sfr!2sfr" 
-    width="100%" 
-    height="450" 
-    style="border:0;" 
-    allowfullscreen 
-    loading="lazy" 
+                           <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2555.905043567056!2d2.7743382760424615!3d50.16291250802618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47dd4fefab6bf471%3A0x72fce8ba09c10e65!2s10%20Rue%20Jules%20Ferry%2C%2062121%20Courcelles-le-Comte!5e0!3m2!1sfr!2sfr!4v1740408239471!5m2!1sfr!2sfr"
+    style="width: 100%; height: 450px; border: 0;"
+    allowfullscreen
+    loading="lazy"
     referrerpolicy="strict-origin-when-cross-origin"
-    sandbox="allow-scripts allow-same-origin"
-    title="Localisation de FLD Agencement"
-></iframe>                       
+    sandbox="allow-scripts"
+    title="Localisation de FLD Agencement">
+</iframe>
+
 
 </div>
                    </div>
