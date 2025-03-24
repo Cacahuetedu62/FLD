@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/var/www/html
+      - /var/www/html/vendor # Exclusion du dossier vendor
+      - ./docker/apache/000-default.conf:/etc/apache2/sites-available/000-default.conf
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_NAME=u301331392_fld_agencement
+      - DB_USER=u301331392_Aurore
+      - DB_PASS=BDDfld2024
+      - DB_CHARSET=utf8mb4
+      - JSONBIN_ID=67cad7ebad19ca34f8181587
+      - JSONBIN_API_KEY=$2a$10$3LK.3X/MjuBXf3HH9BguX.lHI82bVxI.lBubn0438cAAWxnfzCydq
+      - DEBUG=true
+    networks:
+      - fld-network
+
+  db:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: u301331392_fld_agencement
+      MYSQL_USER: u301331392_Aurore
+      MYSQL_PASSWORD: BDDfld2024
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./fld-agencement.sql:/docker-entrypoint-initdb.d/fld-agencement.sql
+    networks:
+      - fld-network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: root
+    depends_on:
+      - db
+    networks:
+      - fld-network
+
+networks:
+  fld-network:
+    driver: bridge
+
+volumes:
+  - ./fld-agencement.sql:/docker-entrypoint-initdb.d/fld-agencement.sql

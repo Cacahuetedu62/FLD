@@ -1,14 +1,22 @@
 <?php
-session_start();
+
+// Vérifier si une session est déjà active
+if (session_status() == PHP_SESSION_NONE) {
+    // Sécurisation des sessions (uniquement si aucune session n'est active)
+    session_set_cookie_params([
+        'httponly' => true,
+        'secure' => isset($_SERVER['HTTPS']),
+        'samesite' => 'Strict'
+    ]);
+    
+    // Démarrer la session
+    session_start();
+}
+
+
 require_once 'lib/pdo.php';
 require_once 'admin/includes/security_headers.php';
 
-// Sécurisation des sessions
-session_set_cookie_params([
-    'httponly' => true,
-    'secure' => isset($_SERVER['HTTPS']),
-    'samesite' => 'Strict'
-]);
 
 // Génération et vérification du token CSRF
 function generateCSRFToken() {
