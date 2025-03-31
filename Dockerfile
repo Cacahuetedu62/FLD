@@ -8,8 +8,12 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     unzip \
     git \
+    libssl-dev \
     && docker-php-ext-install -j$(nproc) mysqli pdo_mysql zip \
     && a2enmod rewrite headers
+
+# Installation de l'extension MongoDB pour PHP
+RUN pecl install mongodb-1.15.0 && docker-php-ext-enable mongodb
 
 # Configuration PHP - Nous allons créer le fichier directement ici au lieu de le copier
 RUN echo '; Paramètres généraux\n\
@@ -59,8 +63,10 @@ DB_USER=${DB_USER:-u301331392_Aurore}\n\
 DB_PASS=${DB_PASS:-BDDfld2024}\n\
 DB_CHARSET=${DB_CHARSET:-utf8mb4}\n\
 \n\
-JSONBIN_ID=${JSONBIN_ID:-67cad7ebad19ca34f8181587}\n\
-JSONBIN_API_KEY=${JSONBIN_API_KEY:-\\$2a\\$10\\$3LK.3X/MjuBXf3HH9BguX.lHI82bVxI.lBubn0438cAAWxnfzCydq}\n\
+# MongoDB pour compteur de visites\n\
+MONGO_URI=${MONGO_URI:-mongodb://mongo:27017}\n\
+MONGO_DB=${MONGO_DB:-visites}\n\
+MONGO_COLLECTION=${MONGO_COLLECTION:-compteur}\n\
 \n\
 # SMTP (Email)\n\
 SMTP_HOST=${SMTP_HOST:-smtp.gmail.com}\n\

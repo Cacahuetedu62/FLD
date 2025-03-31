@@ -6,9 +6,15 @@ error_reporting(E_ALL);
 // Charger les variables d'environnement
 require_once __DIR__ . '/lib/config.php';
 
-// Récupérer les clés pour le compteur
-$jsonbin_id = $config['jsonbin']['id'] ?? '';
-$jsonbin_key = $config['jsonbin']['key'] ?? '';
+// Compteur de visites MongoDB
+require_once __DIR__ . '/lib/visit_counter.php';
+
+// Incrémente le compteur uniquement pour les vraies visites (non AJAX)
+if (!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || $_SERVER['HTTP_X_REQUESTED_WITH'] !== 'XMLHttpRequest') {
+    $visitCount = incrementVisitCounter();
+} else {
+    $visitCount = getVisitCount();
+}
 ?>
 
 <!DOCTYPE html>
@@ -209,10 +215,10 @@ $jsonbin_key = $config['jsonbin']['key'] ?? '';
 </section>
 
 <div class="visits-container m-2">
-  <div class="visits-box">
-      <div class="visits-display" id="visit-count">...</div>
-      <div class="visits-label">Visiteurs</div>
-  </div>
+    <div class="visits-box">
+        <div class="visits-display" id="visit-count"><?php echo number_format($visitCount); ?></div>
+        <div class="visits-label">Visiteurs</div>
+    </div>
 </div>
 
 <footer>
@@ -263,16 +269,6 @@ $jsonbin_key = $config['jsonbin']['key'] ?? '';
 
 
 <script>
-// Script pour changer la couleur de la navbar lors du défilement
-window.addEventListener('scroll', function() {
-  const navbar = document.querySelector('.navbar');
-  if (window.scrollY > 50) {
-      navbar.classList.add('scrolled');
-  } else {
-      navbar.classList.remove('scrolled');
-  }
-});
-
 // Animation pour les cartes de services et valeurs
 document.addEventListener('DOMContentLoaded', function() {
   // Fonction pour vérifier si un élément est visible dans la fenêtre
@@ -308,55 +304,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // Lancer l'animation au chargement et au défilement
   animateOnScroll();
   window.addEventListener('scroll', animateOnScroll);
-
-  // JSONbin counter avec variables PHP
-  const BIN_ID = '<?php echo $jsonbin_id; ?>';
-  const API_KEY = '<?php echo $jsonbin_key; ?>';
-
-  // Récupérer le nombre de visites
-  async function getVisitCount() {
-      try {
-          const response = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`, {
-              headers: {
-                  'X-Master-Key': API_KEY
-              }
-          });
-          const data = await response.json();
-          return data.record.visits || 0;
-      } catch (error) {
-          console.error('Erreur lors de la récupération du compteur:', error);
-          return 0;
-      }
-  }
-
-  // Incrémenter le compteur
-  async function incrementVisitCount() {
-      try {
-          const currentCount = await getVisitCount();
-          const newCount = currentCount + 1;
-          
-          await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
-              method: 'PUT',
-              headers: {
-                  'Content-Type': 'application/json',
-                  'X-Master-Key': API_KEY
-              },
-              body: JSON.stringify({ visits: newCount })
-          });
-          
-          document.getElementById('visit-count').textContent = newCount;
-      } catch (error) {
-          console.error('Erreur lors de l\'incrémentation:', error);
-      }
-  }
-
-  // Initialisation
-  getVisitCount().then(count => {
-      document.getElementById('visit-count').textContent = count;
-  });
-  
-  // Puis incrémenter
-  incrementVisitCount();
 });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
