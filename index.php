@@ -214,10 +214,14 @@ if (!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || $_SERVER['HTTP_X_REQUESTED_WITH
   </div>
 </section>
 
-<div class="visits-container m-2">
-    <div class="visits-box">
-        <div class="visits-display" id="visit-count"><?php echo number_format($visitCount); ?></div>
-        <div class="visits-label">Visiteurs</div>
+<div class="page-views-counter">
+    <div class="counter-icon">
+        <i class="fas fa-eye"></i>
+    </div>
+    <div class="counter-content">
+        <div class="counter-label">Cette page a été vue</div>
+        <div class="counter-number" id="visit-count"><?php echo number_format($visitCount); ?></div>
+        <div class="counter-label">fois</div>
     </div>
 </div>
 
@@ -308,5 +312,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
+<script src="compteur.js" defer></script>
 </body>
 </html>

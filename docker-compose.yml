@@ -23,8 +23,6 @@ services:
       - MONGO_URI=mongodb://mongo:27017
       - MONGO_DB=visites
       - MONGO_COLLECTION=compteur
-      - JSONBIN_ID=67cad7ebad19ca34f8181587
-      - JSONBIN_API_KEY=$2a$10$3LK.3X/MjuBXf3HH9BguX.lHI82bVxI.lBubn0438cAAWxnfzCydq
       - DEBUG=true
     networks:
       - fld-network
